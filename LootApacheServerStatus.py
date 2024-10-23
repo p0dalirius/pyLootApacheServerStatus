@@ -12,11 +12,15 @@ import argparse
 def get_infos(url, verify=True):
     r = requests.get(url, verify=verify)
     soup = BeautifulSoup(r.content, "lxml")
-    table = soup.findAll("table")[1]
+    tables = sorted([t for t in soup.findAll("table")], key=lambda x:str(x).count("HTTP/1."))
+    requestsTable = None
+    if len(tables) != 0:
+        requestsTable = tables[-1]
+
     data = []
-    if table is not None:
-        columns = [td.text for td in table.findAll("th")]
-        for row in table.findAll("tr")[1:]:
+    if requestsTable is not None:
+        columns = [td.text for td in requestsTable.findAll("th")]
+        for row in requestsTable.findAll("tr")[1:]:
             # Srv	PID	Acc	M	CPU 	SS	Req	Conn	Child	Slot	Client	VHost	Request
             values = [td.text for td in row.findAll("td")]
             # columns = ["Srv", "PID", "Acc", "M", "CPU", "SS", "Req", "Conn", "Child", "Slot", "Client", "VHost", "Request"]
