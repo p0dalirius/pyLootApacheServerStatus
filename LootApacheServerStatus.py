@@ -31,7 +31,7 @@ def get_infos(url, verify=True):
 
 
 def parseArgs():
-    print("LootApacheServerStatus v1.1 - by @podalirius_\n")
+    print("LootApacheServerStatus v1.1 - by Remi GASCOU (Podalirius)\n")
 
     parser = argparse.ArgumentParser(description="A script to automatically dump all URLs present in /server-status to a file locally.")
     parser.add_argument("-t", "--target", dest="target", action="store", type=str, required=True, help="URL of the Apache server-status to connect to.")

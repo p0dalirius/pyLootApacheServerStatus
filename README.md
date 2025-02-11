@@ -18,7 +18,7 @@
 
 ```
 $ ./LootApacheServerStatus.py -h
-LootApacheServerStatus v1.1 - by @podalirius_
+LootApacheServerStatus v1.1 - by Remi GASCOU (Podalirius)
 
 usage: LootApacheServerStatus.py [-h] -t TARGET [-l LOGFILE] [-v] [-k]
 
